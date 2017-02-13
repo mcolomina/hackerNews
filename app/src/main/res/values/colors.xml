@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF9800</color>
+    <color name="primary_dark">#F26522</color>
+    <color name="primary_light">#F7F7EF</color>
+    <color name="secondary_light">#EDEDE6</color>
+    <color name="accent">#FCA942</color>
+    <color name="accent_light">#80FAC190</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#BDBDBD</color>
+
+    <!--HackerNews colors-->
+    <color name="hackernews_splash_background">#F26522</color>
+</resources>
