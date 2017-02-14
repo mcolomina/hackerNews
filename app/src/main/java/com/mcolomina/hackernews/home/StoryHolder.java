@@ -49,7 +49,7 @@ class StoryHolder extends RecyclerView.ViewHolder {
             view.setSelected(false);
             this.story = story;
             title.setText(this.story.getTitle());
-            time.setText(new DateConverter(this.story.getTime()).getDate() + " |");
+            time.setText(DateConverter.unixToString(this.story.getTime())+ " |");
             score.setText(this.story.getScore() + " points " + " |");
             numComments.setText((this.story.getKids() != null ? String.valueOf(this.story.getKids().size()) : "0") + " comments");
             by.setText(this.story.getBy() != null ? "by " + this.story.getBy() + " |" : "sdc");

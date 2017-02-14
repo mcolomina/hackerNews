@@ -4,19 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class DateConverter {
-    String date;
+public final class DateConverter {
 
-    public DateConverter(String unixDate) {
-
+    public static String unixToString(String unixDate) {
         long timestamp = Long.parseLong(unixDate) * 1000;
         Date time = new Date(timestamp);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        date = sdf.format(time);
+        return sdf.format(time);
     }
 
-    public String getDate() {
-        return date;
-    }
 }
