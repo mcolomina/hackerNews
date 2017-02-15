@@ -66,7 +66,7 @@ public class NetModule {
 
     @Provides
     @ApplicationScope
-    StoriesLoader provideStoriesLoader(Retrofit retrofit){
+    StoriesLoader provideStoriesLoader(Retrofit retrofit) {
         return new StoriesLoader(retrofit);
     }
 

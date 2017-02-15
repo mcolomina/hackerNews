@@ -1,15 +1,12 @@
 package com.mcolomina.hackernews.home;
 
 import com.mcolomina.hackernews.main.MainView;
-import com.mcolomina.hackernews.net.HackerRestApi;
 import com.mcolomina.hackernews.net.StoriesLoader;
 import com.mcolomina.hackernews.net.Story;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
-
-import retrofit2.Retrofit;
 
 public class HomePresenter implements StoriesLoader.LoaderCallback {
 
