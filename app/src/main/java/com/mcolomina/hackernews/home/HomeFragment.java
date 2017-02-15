@@ -11,6 +11,7 @@ import android.view.View;
 import com.mcolomina.hackernews.R;
 import com.mcolomina.hackernews.main.MainActivity;
 import com.mcolomina.hackernews.main.MainView;
+import com.mcolomina.hackernews.net.StoriesLoader;
 import com.mcolomina.hackernews.net.Story;
 import com.mcolomina.hackernews.util.di.Injector;
 import com.mcolomina.hackernews.util.ui.BaseFragment;
@@ -24,7 +25,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import retrofit2.Retrofit;
 
-public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, EndlessScrollListener.Callback, HomePresenter.ListCallback, StoryHolder.Callback {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, EndlessScrollListener.Callback,ListCallback, StoryHolder.Callback {
 
     @BindView(R.id.list)
     RecyclerView homeRecyclerView;
@@ -32,9 +33,11 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public SwipeRefreshLayout refreshLayout;
 
     @Inject
-    HomePresenter homePresenter;
-    @Inject
     Retrofit retrofit;
+    @Inject
+    StoriesLoader storiesLoader;
+    @Inject
+    HomePresenter homePresenter;
 
     private ArrayList<Story> storiesList;
     private HomeListAdapter adapter;
@@ -85,7 +88,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         homeRecyclerView.addOnScrollListener(scrollListener);
         adapter = new HomeListAdapter(getActivity(), storiesList, this);
         homeRecyclerView.setAdapter(adapter);
-
+        homePresenter.initPresenter();
     }
 
     @Override
@@ -131,7 +134,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                     shownStories.add(new Story(HomeListAdapter.TYPE_NEWS, stories.get(i)));
                 }
                 adapter.updateList(shownStories, refreshLayout.isRefreshing());
-               // storiesList.addAll(shownStories);
             } else if (adapter.getItems().size() <= 1 && stories.isEmpty()) {
                 adapter.removeLoadingItem();
             } else if (stories.isEmpty()) {
@@ -139,11 +141,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             }
             stopRefreshing();
         }
-    }
-
-    @Override
-    public void onFailedListLoading() {
-        adapter.removeLoadingItem();
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.mcolomina.hackernews.app;
 import android.content.Context;
 
 import com.mcolomina.hackernews.net.NetModule;
+import com.mcolomina.hackernews.net.StoriesLoader;
 
 import dagger.Component;
 import retrofit2.Retrofit;
@@ -14,5 +15,7 @@ public interface AppComponent {
     Context context();
 
     Retrofit retrofit();
+
+    StoriesLoader storiesLoader();
 
 }

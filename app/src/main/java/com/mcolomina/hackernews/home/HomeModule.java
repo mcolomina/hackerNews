@@ -1,6 +1,7 @@
 package com.mcolomina.hackernews.home;
 
 import com.mcolomina.hackernews.main.ActivityScope;
+import com.mcolomina.hackernews.net.StoriesLoader;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,7 +12,7 @@ public class HomeModule {
 
     @ActivityScope
     @Provides
-    public HomePresenter provideHomePresenter(Retrofit retrofit) {
-        return new HomePresenter(retrofit);
+    public HomePresenter provideHomePresenter(StoriesLoader storiesLoader) {
+        return new HomePresenter(storiesLoader);
     }
 }

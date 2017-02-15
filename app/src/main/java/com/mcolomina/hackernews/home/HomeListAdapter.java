@@ -38,7 +38,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
         if (viewType == TYPE_NEWS) {
-            viewHolder = new StoryHolder(inflater.inflate(R.layout.list_item, parent, false),callback);
+            viewHolder = new StoryHolder(inflater.inflate(R.layout.list_item, parent, false), callback);
         } else if (viewType == TYPE_LOAD) {
             viewHolder = new LoadHolder(inflater.inflate(R.layout.list_item_load, parent, false));
         }
